@@ -13,5 +13,5 @@ LABEL authors="igormonte"
 
 
 
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-XX:MaxRAM=512m", "-jar", "app.jar"]
 CMD ["--spring.profiles.active=prod"]
