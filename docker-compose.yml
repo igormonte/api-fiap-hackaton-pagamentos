@@ -1,0 +1,98 @@
+version: "3.9"
+name: hackaton
+services:
+
+  gateway-app:
+    image: gateway/latest
+    depends_on:
+      - mysqldb
+      - pagamentos-app
+      - cliente-app
+      - autenticacao-app
+      - cartao-app
+    build:
+      context: ./gateway
+      dockerfile: Dockerfile
+    command: --spring.profiles.active=prod
+    ports:
+      - "8080:8080"
+    networks:
+      - prod
+
+  pagamentos-app:
+    image: pagamentos/latest
+    depends_on:
+      cartao-app:
+        condition: service_started
+      mysqldb:
+        condition: service_healthy
+    build:
+      context: ./pagamentos
+      dockerfile: Dockerfile
+    command: --spring.profiles.active=prod
+#    ports:
+#      - "8081:8081"
+    networks:
+      - prod
+
+  autenticacao-app:
+    image: autenticacao/latest
+    build:
+      context: ./autenticacao
+      dockerfile: Dockerfile
+    command: --spring.profiles.active=prod
+    #    ports:
+    #      - "8082:8082"
+    networks:
+      - prod
+
+  cliente-app:
+    image: cliente/latest
+    depends_on:
+      mysqldb:
+        condition: service_healthy
+    build:
+      context: ./cliente
+      dockerfile: Dockerfile
+    command: --spring.profiles.active=prod
+#    ports:
+#      - "8082:8082"
+    networks:
+      - prod
+
+  cartao-app:
+    image: cartao/latest
+    depends_on:
+      cliente-app:
+        condition: service_started
+      mysqldb:
+          condition: service_healthy
+    build:
+      context: ./cartao
+      dockerfile: Dockerfile
+    command: --spring.profiles.active=prod
+#    ports:
+#      - "8083:8083"
+    networks:
+      - prod
+
+  mysqldb:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    command: --init-file /data/application/init.sql
+    volumes:
+      - ./sql/prod.sql:/data/application/init.sql
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+    ports:
+      - "3306:3306"
+    networks:
+      - prod
+
+networks:
+  prod:
+    driver: bridge

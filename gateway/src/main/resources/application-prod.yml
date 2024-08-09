@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: gateway
+hackaton:
+  cartao:
+    api:
+      url: http://cartao-app:8081
+  autenticacao:
+    api:
+      url: http://autenticacao-app:8082
+  cliente:
+    api:
+      url: http://cliente-app:8083
+  pagamentos:
+    api:
+      url: http://pagamentos-app:8084
+
+route:
+  config:
+    routes:
+      - path: "/api/cliente"
+      - path: "/api/cartao"
+      - path: "/api/pagamentos"
+        secured: true
+server:
+  port: 8080

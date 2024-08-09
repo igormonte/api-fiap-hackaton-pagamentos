@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="gateway" />
+      </profile>
+      <profile name="Annotation profile for cliente" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.32/lombok-1.18.32.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct-processor/1.5.5.Final/mapstruct-processor-1.5.5.Final.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct/1.5.5.Final/mapstruct-1.5.5.Final.jar" />
+        </processorPath>
+        <module name="cliente" />
+        <module name="autenticacao" />
+      </profile>
+      <profile name="Annotation profile for pagamentos" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.34/lombok-1.18.34.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct-processor/1.5.5.Final/mapstruct-processor-1.5.5.Final.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct/1.5.5.Final/mapstruct-1.5.5.Final.jar" />
+        </processorPath>
+        <module name="pagamentos" />
+        <module name="cartao" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="carrinhocompra-gateway" target="17" />
+      <module name="carrinhocompra-login" target="17" />
+      <module name="pagamentos (1)" target="17" />
+      <module name="pagamentos (2)" target="17" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="autenticacao" options="-parameters -Amapstruct.defaultComponentModel=spring" />
+      <module name="carrinhocompra-gateway" options="-parameters" />
+      <module name="carrinhocompra-login" options="-parameters -Amapstruct.defaultComponentModel=spring" />
+      <module name="cartao" options="-parameters -Amapstruct.defaultComponentModel=spring" />
+      <module name="cliente" options="-parameters -Amapstruct.defaultComponentModel=spring" />
+      <module name="gateway" options="-parameters" />
+      <module name="pagamentos" options="-parameters -Amapstruct.defaultComponentModel=spring" />
+      <module name="pagamentos (1)" options="-parameters" />
+      <module name="pagamentos (2)" options="-parameters" />
+    </option>
+  </component>
+</project>
