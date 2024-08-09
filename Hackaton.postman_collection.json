@@ -1,0 +1,355 @@
+{
+	"info": {
+		"_postman_id": "7ef72bac-63f6-4114-90e9-078a1312689d",
+		"name": "Hackaton",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13191053"
+	},
+	"item": [
+		{
+			"name": "gateway",
+			"item": [
+				{
+					"name": "Usuario",
+					"item": [
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"usuario\":\"adj2\",\r\n    \"senha\":\"adj@1234\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8082/autenticacao",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"autenticacao"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Check",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJwb3N0ZWNoIiwic3ViIjoiYWRqMiIsImV4cCI6MTcyMzE4MDAxOH0.3pZXd8wdKJYUa1zr8ukN7qyWYdPCp3l3e0NWHbRC5Vc",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/autenticacao/check",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"autenticacao",
+										"check"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Cliente",
+					"item": [
+						{
+							"name": "Criar Conta",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJwb3N0ZWNoIiwic3ViIjoiYWRqMiIsImV4cCI6MTcyMzE4MDAxOH0.3pZXd8wdKJYUa1zr8ukN7qyWYdPCp3l3e0NWHbRC5Vc",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"cpf\":\"1111111111\",\r\n    \"nome\":\"João da Silva\",\r\n    \"email\":\"joao@example.com\",\r\n    \"telefone\":\"+55 11 91234-5678\",\r\n    \"rua\":\"Rua A\",\r\n    \"cidade\":\"Cidade\",\r\n    \"estado\":\"Estado\",\r\n    \"cep\":\"12345-678\",\r\n    \"pais\":\"Brasil\"\r\n }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/cliente",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"cliente"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Buscar por Cpf",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJwb3N0ZWNoIiwic3ViIjoiYWRqMiIsImV4cCI6MTcyMzE4MDAxOH0.3pZXd8wdKJYUa1zr8ukN7qyWYdPCp3l3e0NWHbRC5Vc",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/cliente?cpf=1111111111",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"cliente"
+									],
+									"query": [
+										{
+											"key": "cpf",
+											"value": "1111111111"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Cartão",
+					"item": [
+						{
+							"name": "Criar Conta",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJwb3N0ZWNoIiwic3ViIjoiYWRqMiIsImV4cCI6MTcyMzE4MDAxOH0.3pZXd8wdKJYUa1zr8ukN7qyWYdPCp3l3e0NWHbRC5Vc",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"cpf\": \"1111111111\",\r\n    \"numero\": \"1234123412331234\",\r\n    \"validade\": \"12/25\",\r\n    \"cvv\": 322,\r\n    \"limite\": 1800\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/cartao",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"cartao"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Buscar por Cpf",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJwb3N0ZWNoIiwic3ViIjoiYWRqMiIsImV4cCI6MTcyMzE4MDAxOH0.3pZXd8wdKJYUa1zr8ukN7qyWYdPCp3l3e0NWHbRC5Vc",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/cartao?cpf=1111111111",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"cartao"
+									],
+									"query": [
+										{
+											"key": "cpf",
+											"value": "1111111111"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Buscar por Cpf e Numero",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJwb3N0ZWNoIiwic3ViIjoiYWRqMiIsImV4cCI6MTcyMzE4MDAxOH0.3pZXd8wdKJYUa1zr8ukN7qyWYdPCp3l3e0NWHbRC5Vc",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/cartao?cpf=1111111111&numero=1234123412331234",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"cartao"
+									],
+									"query": [
+										{
+											"key": "cpf",
+											"value": "1111111111"
+										},
+										{
+											"key": "numero",
+											"value": "1234123412331234"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Pagamento",
+					"item": [
+						{
+							"name": "Aprovar Pagamento",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJwb3N0ZWNoIiwic3ViIjoiYWRqMiIsImV4cCI6MTcyMzE4MDAxOH0.3pZXd8wdKJYUa1zr8ukN7qyWYdPCp3l3e0NWHbRC5Vc",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"cpf\": \"1111111111\",\r\n    \"numero\": \"1234123412331234\",\r\n    \"data_validade\": \"12/25\",\r\n    \"cvv\": 322,\r\n    \"valor\": 1000\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/pagamentos",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"pagamentos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Buscar Pagamentos por Id Cliente",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJwb3N0ZWNoIiwic3ViIjoiYWRqMiIsImV4cCI6MTcyMzE4MDAxOH0.3pZXd8wdKJYUa1zr8ukN7qyWYdPCp3l3e0NWHbRC5Vc",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/pagamentos/cliente/94b33ab4-95d5-47e7-99ff-75675a04a662",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"pagamentos",
+										"cliente",
+										"94b33ab4-95d5-47e7-99ff-75675a04a662"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
